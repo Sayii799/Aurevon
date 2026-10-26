@@ -1,0 +1,690 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUREVON | Ideas Evolve. Futures Emerge.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black: #080808;
+  --gold: #d7b46a;
+  --white: #f7f4ed;
+  --grey: #a6a39c;
+  --line: rgba(215,180,106,.22);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 7%;
+  background: rgba(8,8,8,.84);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+.logo {
+  font-size: 25px;
+  letter-spacing: 5px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a {
+  color: #d0cec8;
+  font-size: 12px;
+  transition: .3s;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.nav-cta {
+  border: 1px solid var(--gold);
+  padding: 11px 17px;
+  color: var(--gold);
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: 0;
+  color: var(--gold);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 150px 9% 90px;
+  background:
+    linear-gradient(90deg, rgba(8,8,8,.97), rgba(8,8,8,.65), rgba(8,8,8,.25)),
+    linear-gradient(0deg, var(--black), transparent 45%),
+    url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2000&q=85")
+    center/cover no-repeat;
+}
+
+.hero-content {
+  max-width: 800px;
+  position: relative;
+  z-index: 2;
+  animation: rise 1.2s ease both;
+}
+
+.eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 11px;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 7.5vw, 100px);
+  line-height: 1.06;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+
+h1 span {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero p {
+  color: #c3c0b8;
+  line-height: 1.9;
+  font-size: 15px;
+  max-width: 490px;
+  margin: 28px 0 35px;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 24px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  transition: .3s;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: #111;
+  border: 1px solid var(--gold);
+}
+
+.btn-gold:hover {
+  background: #f0d99f;
+  transform: translateY(-3px);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255,255,255,.35);
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.hero-bottom {
+  position: absolute;
+  bottom: 35px;
+  left: 9%;
+  right: 9%;
+  display: flex;
+  justify-content: space-between;
+  color: #aaa69c;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+section {
+  padding: 110px 9%;
+}
+
+.section-label {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 500;
+  line-height: 1.2;
+  max-width: 760px;
+}
+
+.section-title span {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 70px;
+  align-items: end;
+}
+
+.intro-text {
+  color: var(--grey);
+  font-size: 14px;
+  line-height: 2;
+}
+
+.services {
+  background: #0e0e0d;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 55px;
+}
+
+.service-card {
+  border: 1px solid var(--line);
+  padding: 38px;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+  transition: .4s;
+  background: linear-gradient(145deg, #151512, #0b0b0b);
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border: 1px solid rgba(215,180,106,.15);
+  border-radius: 50%;
+  right: -70px;
+  bottom: -80px;
+  transition: .4s;
+}
+
+.service-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-6px);
+}
+
+.service-card:hover::after {
+  transform: scale(1.4);
+}
+
+.number {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.service-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 32px 0 15px;
+}
+
+.service-card p {
+  color: var(--grey);
+  line-height: 1.8;
+  font-size: 13px;
+  max-width: 400px;
+}
+
+.learn-more {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 12px;
+  margin-top: 25px;
+}
+
+.approach {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 80px;
+}
+
+.approach-list {
+  margin-top: 15px;
+}
+
+.approach-item {
+  padding: 25px 0;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 45px 1fr;
+  gap: 15px;
+}
+
+.approach-item span {
+  color: var(--gold);
+  font-size: 12px;
+}
+
+.approach-item h3 {
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.approach-item p {
+  color: var(--grey);
+  line-height: 1.7;
+  font-size: 13px;
+}
+
+.about {
+  background:
+    linear-gradient(rgba(8,8,8,.88), rgba(8,8,8,.96)),
+    url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1800&q=80")
+    center/cover;
+  text-align: center;
+}
+
+.about .section-title {
+  margin: 0 auto;
+}
+
+.about p {
+  color: var(--grey);
+  max-width: 650px;
+  margin: 25px auto 0;
+  line-height: 2;
+  font-size: 14px;
+}
+
+.contact {
+  text-align: center;
+}
+
+.contact .section-title {
+  margin: 0 auto;
+}
+
+.contact p {
+  color: var(--grey);
+  margin: 22px auto 30px;
+  line-height: 1.8;
+}
+
+.email {
+  display: inline-block;
+  color: var(--gold);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 8px;
+  margin-bottom: 30px;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 28px 9%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: var(--grey);
+  font-size: 11px;
+}
+
+footer span {
+  color: var(--gold);
+}
+
+#topBtn {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 42px;
+  height: 42px;
+  background: var(--gold);
+  color: #111;
+  border: none;
+  cursor: pointer;
+  display: none;
+  z-index: 99;
+  font-size: 20px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 760px) {
+  header { padding: 18px 6%; }
+  .logo { font-size: 21px; }
+  .menu-btn { display: block; }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    padding: 25px 6%;
+    background: #0b0b0b;
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  nav.open { display: flex; }
+  .hero { padding: 130px 6% 100px; }
+  .hero-bottom { left: 6%; right: 6%; }
+  section { padding: 80px 6%; }
+  .intro, .approach { grid-template-columns: 1fr; gap: 30px; }
+  .service-grid { grid-template-columns: 1fr; }
+  .service-card { padding: 28px; }
+  footer { padding: 25px 6%; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#home" class="logo">AUREVON</a>
+
+  <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰</button>
+
+  <nav id="nav">
+    <a href="#home">HOME</a>
+    <a href="#about">ABOUT</a>
+    <a href="#services">SERVICES</a>
+    <a href="#approach">APPROACH</a>
+    <a href="#contact" class="nav-cta">LET'S TALK ↗</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="eyebrow">Independent Digital Creative Studio</div>
+
+      <h1>Ideas evolve.<br><span>Futures emerge.</span></h1>
+
+      <p>
+        We transform ambitious ideas into powerful digital experiences.
+        From distinctive brand identities to modern websites, we help
+        businesses build a presence that moves them forward.
+      </p>
+
+      <div class="buttons">
+        <a href="#services" class="btn btn-gold">EXPLORE OUR SERVICES ↗</a>
+        <a href="#contact" class="btn btn-outline">START A PROJECT</a>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <span>CREATIVITY × TECHNOLOGY</span>
+      <span>BUILT FOR WHAT'S NEXT</span>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="intro reveal">
+      <div>
+        <div class="section-label">01 — Who We Are</div>
+        <h2 class="section-title">
+          Design with purpose.<br>
+          <span>Digital with direction.</span>
+        </h2>
+      </div>
+
+      <p class="intro-text">
+        AUREVON is a creative digital brand focused on helping ideas become
+        meaningful digital experiences. We combine thoughtful design,
+        modern technology and a future-focused mindset to create work
+        that feels distinctive, functional and memorable.
+      </p>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="reveal">
+      <div class="section-label">02 — What We Do</div>
+      <h2 class="section-title">
+        Your vision.<br><span>Our digital craft.</span>
+      </h2>
+    </div>
+
+    <div class="service-grid">
+      <article class="service-card reveal">
+        <div class="number">01 / DIGITAL</div>
+        <h3>Website Design & Development</h3>
+        <p>
+          Modern, responsive websites designed to communicate your value,
+          strengthen your online presence and give your audience a smooth
+          experience across devices.
+        </p>
+        <a href="#contact" class="learn-more">DISCUSS YOUR WEBSITE ↗</a>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="number">02 / IDENTITY</div>
+        <h3>Branding & Logo Design</h3>
+        <p>
+          Distinctive visual identities that help your business express
+          its personality through logo concepts, visual direction,
+          typography and a cohesive brand aesthetic.
+        </p>
+        <a href="#contact" class="learn-more">BUILD YOUR BRAND ↗</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="approach">
+      <div class="reveal">
+        <div class="section-label">03 — Our Approach</div>
+        <h2 class="section-title">
+          Thoughtful ideas.<br><span>Meaningful results.</span>
+        </h2>
+      </div>
+
+      <div class="approach-list reveal">
+        <div class="approach-item">
+          <span>01</span>
+          <div>
+            <h3>Discover</h3>
+            <p>We understand your goals, audience and the idea behind your business.</p>
+          </div>
+        </div>
+
+        <div class="approach-item">
+          <span>02</span>
+          <div>
+            <h3>Design</h3>
+            <p>We develop a clear visual direction tailored to your identity and needs.</p>
+          </div>
+        </div>
+
+        <div class="approach-item">
+          <span>03</span>
+          <div>
+            <h3>Build</h3>
+            <p>We turn the concept into a responsive digital experience.</p>
+          </div>
+        </div>
+
+        <div class="approach-item">
+          <span>04</span>
+          <div>
+            <h3>Evolve</h3>
+            <p>We help you move forward with a foundation designed for growth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="reveal">
+      <div class="section-label">04 — The AUREVON Vision</div>
+      <h2 class="section-title">
+        Not just a presence.<br>
+        <span>A lasting impression.</span>
+      </h2>
+      <p>
+        We believe great digital work should do more than look good.
+        It should communicate clearly, solve real problems and help
+        ambitious ideas find their place in the future.
+      </p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="reveal">
+      <div class="section-label">05 — Start Something New</div>
+      <h2 class="section-title">
+        Have an idea?<br><span>Let's evolve it.</span>
+      </h2>
+
+      <p>
+        Tell us what you're imagining.<br>
+        Let's explore what we can create together.
+      </p>
+
+      <a class="email" href="mailto:aurevon777@gmail.com">
+        aurevon777@gmail.com
+      </a>
+
+      <br>
+
+      <a class="btn btn-gold"
+         href="mailto:aurevon777@gmail.com?subject=AUREVON%20Project%20Enquiry">
+        START A CONVERSATION ↗
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="logo">AUREVON</div>
+  <div>Ideas evolve. <span>Futures emerge.</span></div>
+  <div>© <span id="year"></span> AUREVON. All rights reserved.</div>
+</footer>
+
+<button id="topBtn" aria-label="Back to top">↑</button>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const nav = document.getElementById("nav");
+const topBtn = document.getElementById("topBtn");
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Mobile navigation
+menuBtn.addEventListener("click", () => {
+  nav.classList.toggle("open");
+  menuBtn.textContent = nav.classList.contains("open") ? "✕" : "☰";
+});
+
+// Close mobile menu after selecting a section
+nav.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("open");
+    menuBtn.textContent = "☰";
+  });
+});
+
+// Back-to-top button
+window.addEventListener("scroll", () => {
+  topBtn.style.display = window.scrollY > 400 ? "block" : "none";
+});
+
+topBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// Reveal sections when scrolling
+const revealElements = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealElements.forEach(element => observer.observe(element));
+} else {
+  revealElements.forEach(element => element.classList.add("visible"));
+}
+</script>
+
+</body>
+</html>
+
